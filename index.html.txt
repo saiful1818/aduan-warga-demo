@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aduan Warga Sukoharjo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+    a.button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: #27ae60;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #ecf0f1;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Aduan Warga Sukoharjo</h1>
+    <p>Sampaikan keluhan Anda untuk lingkungan yang lebih baik</p>
+  </header>
+  <main>
+    <a href="form.html" class="button">Kirim Aduan</a>
+    <a href="dashboard.html" class="button">Lihat Dashboard</a>
+  </main>
+  <footer>
+    &copy; 2025 Aduan Warga x Raja Konten AI
+  </footer>
+</body>
+</html>

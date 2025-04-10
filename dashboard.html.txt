@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Admin - Aduan Warga Sukoharjo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background-color: #34495e;
+      padding: 2rem;
+      color: white;
+      text-align: center;
+    }
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #ecf0f1;
+    }
+    .status-baru { color: white; background-color: #3498db; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.9rem; }
+    .status-proses { color: white; background-color: #f39c12; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.9rem; }
+    .status-selesai { color: white; background-color: #2ecc71; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.9rem; }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #ecf0f1;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dashboard Admin</h1>
+    <p>Data Aduan Warga RT 02 RW 07 Gayam</p>
+  </header>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Aduan</th>
+          <th>Tanggal</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="data-aduan">
+        <!-- Data aduan akan muncul di sini -->
+      </tbody>
+    </table>
+  </main>
+  <footer>
+    &copy; 2025 Aduan Warga x Raja Konten AI
+  </footer>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('aduanWarga')) || [];
+    const tbody = document.getElementById('data-aduan');
+
+    if (data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="4">Belum ada data aduan.</td></tr>';
+    } else {
+      data.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${item.nama}</td>
+          <td>${item.aduan}</td>
+          <td>${item.tanggal}</td>
+          <td><span class="status-${item.status.toLowerCase()}">${item.status}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  </script>
+</body>
+</html>

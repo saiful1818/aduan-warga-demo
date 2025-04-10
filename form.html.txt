@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Form Aduan Warga</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f3f5;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    form {
+      max-width: 500px;
+      margin: 2rem auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #219150;
+    }
+  </style>
+</head>
+<body>
+  <h1>Form Aduan Warga</h1>
+  <form onsubmit="simpanAduan(event)">
+    <label for="nama">Nama Lengkap</label>
+    <input type="text" id="nama" required />
+
+    <label for="aduan">Isi Aduan</label>
+    <textarea id="aduan" rows="4" required></textarea>
+
+    <label for="status">Status Aduan</label>
+    <select id="status">
+      <option>Baru</option>
+      <option>Proses</option>
+      <option>Selesai</option>
+    </select>
+
+    <button type="submit">Kirim Aduan</button>
+  </form>
+
+  <script>
+    function simpanAduan(event) {
+      event.preventDefault();
+      const nama = document.getElementById('nama').value;
+      const aduan = document.getElementById('aduan').value;
+      const status = document.getElementById('status').value;
+      const tanggal = new Date().toLocaleDateString('id-ID');
+
+      const dataLama = JSON.parse(localStorage.getItem('aduanWarga')) || [];
+      dataLama.push({ nama, aduan, status, tanggal });
+
+      localStorage.setItem('aduanWarga', JSON.stringify(dataLama));
+      alert('Aduan berhasil disimpan!');
+      window.location.href = 'dashboard.html';
+    }
+  </script>
+</body>
+</html>
